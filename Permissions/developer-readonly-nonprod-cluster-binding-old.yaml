@@ -1,0 +1,12 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: astm-readonly-qa-binding
+subjects:
+- kind: User
+  name: kube-sudo-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: astm-readonly-qa
+  apiGroup: rbac.authorization.k8s.io
