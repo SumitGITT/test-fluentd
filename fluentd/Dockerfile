@@ -2,8 +2,8 @@
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 #SHELL ["powershell", "-NoLogo", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-#LABEL maintainer "Fluentd developers <fluentd@googlegroups.com>"
-#LABEL Description="Fluentd docker image" Vendor="Fluent Organization" Version="1.14.1"
+LABEL maintainer "Fluentd developers <fluentd@googlegroups.com>"
+LABEL Description="Fluentd docker image" Vendor="Fluent Organization" Version="1.10.0"
 
 # Do not split this into multiple RUN!
 # Docker creates a layer for every RUN-Statement
