@@ -15,7 +15,7 @@ RUN choco install -y ruby --version 2.6.5.1 --params "'/InstallDir:C:\ruby26'"
 RUN choco install -y msys2 --version 20210604.0.0 --params "'/NoPath /NoUpdate /InstallDir:C:\ruby26\msys64'"
 RUN refreshenv \
 ridk install 3 \
-'gem: --no-document' | Out-File -Encoding UTF8 -NoNewline -Force -FilePath 'C:\ProgramData\gemrc'; \
+&& echo gem: --no-document >> C:\ProgramData\gemrc \
 
 gem install bundler; \
 bundle config build.certstore_c --with-cflags="-Wno-attributes"; \
