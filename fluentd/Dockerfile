@@ -16,6 +16,12 @@ RUN choco install -y ruby --version 2.6.5.1 --params "'/InstallDir:C:\ruby26'" \
 RUN refreshenv \
 && ridk install 3 \
 && echo gem: --no-document >> C:\ProgramData\gemrc \
+
+gem install bundler; \
+bundle config build.certstore_c --with-cflags="-Wno-attributes"; \
+bundle config build.yajl-ruby --with-cflags="-Wno-attributes"; \
+bundle config build.oj --with-cflags="-Wno-attributes"; \
+
 && gem install cool.io -v 1.5.4 --platform ruby \
 && gem install oj -v 3.3.10 \
 && gem install json -v 2.2.0 \
