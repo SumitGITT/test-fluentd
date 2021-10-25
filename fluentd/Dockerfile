@@ -44,4 +44,4 @@ ENV FLUENTD_CONF="fluent.conf"
 
 EXPOSE 24224 5140
 
-ENTRYPOINT command: ["powershell", "-command", "fluentd"]
+ENTRYPOINT ["powershell", "-command", "fluentd"]
