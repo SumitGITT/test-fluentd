@@ -29,11 +29,11 @@ gem install win32-service -v 2.1.6; \
 gem install win32-ipc -v 0.7.0; \
 gem install win32-event -v 0.6.3; \
 gem install windows-pr -v 1.2.6; \
-gem install aws-sdk-cloudwatchlogs; \
-gem install fluent-plugin-concat; \
-gem install fluent-plugin-rewrite-tag-filter; \
-gem install fluent-plugin-multi-format-parser; \
-gem install fluent-plugin-cloudwatch-logs; \
+# gem install aws-sdk-cloudwatchlogs; \
+# gem install fluent-plugin-concat; \
+# gem install fluent-plugin-rewrite-tag-filter; \
+# gem install fluent-plugin-multi-format-parser; \
+# gem install fluent-plugin-cloudwatch-logs; \
 gem sources --clear-all
 
 # Remove gem cache and chocolatey
