@@ -63,8 +63,8 @@ spec:
         volumeMounts:
         - name: fluentdconftemp
           mountPath: /etc/temp/
-        - name: fluentdconf
-          mountPath: /etc/fluent
+        # - name: fluentdconf
+        #   mountPath: /etc/fluent
       containers:
       - name: fluentd-windows
         image: astmcorp/windows-fluentd:latest
@@ -88,8 +88,8 @@ spec:
         volumeMounts:
         - name: fluentdconftemp
           mountPath: /etc/temp/
-        - name: fluentdconf
-          mountPath: /etc/fluent
+        # - name: fluentdconf
+        #   mountPath: /etc/fluent
         - name: varlog
           mountPath: /var/log
         - name: varlibdockercontainers

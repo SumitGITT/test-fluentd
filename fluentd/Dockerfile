@@ -15,12 +15,10 @@ RUN choco install -y ruby --version 2.6.5.1 --params "'/InstallDir:C:\ruby26'" \
 RUN refreshenv; \
 ridk install 2 3; \
 echo gem: --no-document >> C:\ProgramData\gemrc \
-
 gem install bundler; \
 bundle config build.certstore_c --with-cflags="-Wno-attributes"; \
 bundle config build.yajl-ruby --with-cflags="-Wno-attributes"; \
 bundle config build.oj --with-cflags="-Wno-attributes"; \
-
 gem install cool.io -v 1.5.4 --platform ruby; \
 gem install oj -v 3.3.10; \
 gem install json -v 2.2.0; \
@@ -29,18 +27,21 @@ gem install win32-service -v 2.1.6; \
 gem install win32-ipc -v 0.7.0; \
 gem install win32-event -v 0.6.3; \
 gem install windows-pr -v 1.2.6; \
-# gem install aws-sdk-cloudwatchlogs; \
-# gem install fluent-plugin-concat; \
-# gem install fluent-plugin-rewrite-tag-filter; \
-# gem install fluent-plugin-multi-format-parser; \
-# gem install fluent-plugin-cloudwatch-logs; \
+gem install aws-sdk-cloudwatchlogs; \
+gem install fluent-plugin-concat; \
+gem install fluent-plugin-rewrite-tag-filter; \
+gem install fluent-plugin-multi-format-parser; \
+gem install fluent-plugin-cloudwatch-logs; \
 gem sources --clear-all
 
 # Remove gem cache and chocolatey
 #RUN powershell -Command "Remove-Item -Force C:\ruby26\lib\ruby\gems\2.6.0\cache\*.gem; Remove-Item -Recurse -Force 'C:\ProgramData\chocolatey'"
 
+COPY fluent.conf /fluent/conf/fluent.conf
+
 ENV FLUENTD_CONF="fluent.conf"
 
 EXPOSE 24224 5140
 
-ENTRYPOINT ["powershell", "-command", "fluentd"]
+ENTRYPOINT ["cmd", "/k", "fluentd", "-c", "C:\\fluent\\conf\\fluent.conf"]
+#ENTRYPOINT ["powershell", "-command", "fluentd"]
