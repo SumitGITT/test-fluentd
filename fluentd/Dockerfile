@@ -86,7 +86,7 @@ RUN refreshenv \
 # Remove gem cache and chocolatey
 RUN powershell -Command "Remove-Item -Force C:\ruby26\lib\ruby\gems\2.6.0\cache\*.gem; Remove-Item -Recurse -Force 'C:\ProgramData\chocolatey'"
 
-COPY fluent.conf /fluent/conf/fluent.conf
+ONBUILD COPY fluent.conf /fluent/conf/fluent.conf
 
 
 ENV FLUENTD_CONF="fluent.conf"
