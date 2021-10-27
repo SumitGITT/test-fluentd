@@ -68,8 +68,8 @@ RUN powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; iex (
 
 # Fluentd depends on cool.io whose fat gem is only available for Ruby < 2.5, so need to specify --platform ruby when install Ruby > 2.5 and install msys2 to get dev tools
 # NOTE: For avoiding stalling with docker build on windows, we must use latest version of msys2.
-RUN choco install -y ruby --version 2.7.3 --params "'/InstallDir:C:\ruby27'" \
-&& choco install -y msys2 --version 20210604.0.0 --params "'/NoPath /NoUpdate /InstallDir:C:\ruby27\msys64'"
+RUN choco install -y ruby --version 2.6.5.1 --params "'/InstallDir:C:\ruby26'" \
+&& choco install -y msys2 --version 20210604.0.0 --params "'/NoPath /NoUpdate /InstallDir:C:\ruby26\msys64'"
 RUN refreshenv \
 && ridk install 3 \
 && echo gem: --no-document >> C:\ProgramData\gemrc \
@@ -93,4 +93,4 @@ ENV FLUENTD_CONF="fluent.conf"
 
 EXPOSE 24224 5140
 
-ENTRYPOINT ["cmd", "/k", "fluentd", "--config", "C:\\fluent\\conf\\fluent.conf"]
+ENTRYPOINT command: ["cmd", "/k", "fluentd", "--config", "C:\\fluent\\conf\\fluent.conf"]
